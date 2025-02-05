@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build/SerialCommunication.uf2'
+elf = 'build/SerialCommunication.elf'
