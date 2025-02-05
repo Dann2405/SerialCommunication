@@ -41,7 +41,7 @@ pico_set_program_name(SerialCommunication "SerialCommunication")
 pico_set_program_version(SerialCommunication "0.1")
 
 # Generate PIO header
-pico_generate_pio_header(SerialCommunication ${CMAKE_CURRENT_LIST_DIR}/blink.pio)
+pico_generate_pio_header(SerialCommunication ${CMAKE_CURRENT_LIST_DIR}/ws2812.pio)
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(SerialCommunication 1)
@@ -49,7 +49,10 @@ pico_enable_stdio_usb(SerialCommunication 1)
 
 # Add the standard library to the build
 target_link_libraries(SerialCommunication
-        pico_stdlib)
+        pico_stdlib
+        hardware_clocks
+        hardware_pio
+        )
 
 # Add the standard include files to the build
 target_include_directories(SerialCommunication PRIVATE
@@ -61,7 +64,7 @@ target_link_libraries(SerialCommunication
         hardware_spi
         hardware_i2c
         hardware_pio
-        
+        hardware_clocks
         )
 
 pico_add_extra_outputs(SerialCommunication)
