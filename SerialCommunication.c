@@ -11,6 +11,7 @@ void ws2812_init(); // prototipo da inicialização do ws281.pio
 
 // Cabeçalhos .h da pasta include
 #include "include/matrixWS2812.h"
+#include "include/leds.h"
 
 int main()
 {
