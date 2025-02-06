@@ -28,6 +28,78 @@ bool number1[columns][rows] =
         0, 0, 1, 0, 0,
         0, 1, 1, 1, 0}; // Vai exibir o numero um
 
+bool number2[columns][rows] =
+    {
+        0, 0, 1, 1, 0,
+        0, 1, 0, 0, 1,
+        0, 0, 0, 1, 0,
+        0, 0, 1, 0, 0,
+        0, 1, 1, 1, 1}; // Vai exibir o numero dois
+
+bool number3[columns][rows] =
+    {
+        0, 0, 1, 1, 0,
+        0, 1, 0, 0, 1,
+        0, 0, 0, 1, 0,
+        0, 1, 0, 0, 1,
+        0, 0, 1, 1, 0
+    }; // Vai exibir o numero três
+
+bool number4[columns][rows] =
+    {
+        0, 0, 0, 1, 1,
+        0, 0, 1, 0, 1,
+        0, 1, 1, 1, 1,
+        0, 0, 0, 0, 1,
+        0, 0, 0, 0, 1
+    }; // Vai exibir o numero 4
+
+
+bool number5[columns][rows] =
+    {
+        0, 1, 1, 1, 1,
+        0, 1, 1, 1, 0,
+        0, 0, 0, 0, 1, 
+        0, 1, 0, 0, 1,
+        0, 0, 1, 1, 0
+    }; // Vai exibir o numero 5
+
+bool number6[columns][rows] = 
+    {
+        0, 1, 1, 1, 1,
+        0, 1, 0, 0, 0, 
+        0, 1, 1, 1, 1,
+        0, 1, 0, 0, 1, 
+        0, 1, 1, 1, 1
+    }; // Vai exibir o numero 6
+
+bool number7[columns][rows] =
+    {
+        0, 1, 1, 1, 1,
+        0, 0, 0, 0, 1,
+        0, 0, 0, 1, 0,
+        0, 0, 1, 0, 0, 
+        0, 1, 0, 0, 0
+    }; // Vai exibir o numero 7
+
+bool number8[columns][rows] =
+    {
+        0, 0, 1, 1, 0,
+        0, 1, 0, 0, 1,
+        0, 0, 1, 1, 0,
+        0, 1, 0, 0, 1,
+        0, 0, 1, 1, 0
+    }; // Vai exibir o numero 8
+
+bool number9[columns][rows] = 
+    {
+        0, 0, 1, 1, 0,
+        0, 1, 0, 0, 1,
+        0, 0, 1, 1, 1,
+        0, 0, 0, 1, 0,
+        0, 0, 1, 0, 0
+    }; // vai exibir o numero 9
+
 // função para enviar cor para o led
 static inline void put_pixel(uint32_t pixel_grb)
 {
@@ -116,5 +188,310 @@ void set_number1(uint8_t r, uint8_t g, uint8_t b)
         }
     }
 }
+
+// Number 2 - matrix
+void set_number2(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint32_t color = urgb_u32(r, g, b); // Define a cor com base nos parâmetros das linhas 10 a 12
+
+    for (int i = columns - 1; i >= 0; i--) // pecorre as linhas de cima para baixo
+    {
+        if ((columns - i) % 2 == 0) // As colunas Ler da direita para a esquerda
+        {
+            for (int j = 0; j < rows; j++) // Linhas lidas da esquerda para a direita j = 0 até j for = 4
+            {
+                if (number2[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+        else // As colunas impares tem as direções invertidas (LINHAS são lidas da DIREITA para a ESQUERDA, criando assim um padrão zigue-zague)
+        {
+            for (int j = rows - 1; j >= 0; j--) // Ler da esquerda para a direita
+            {
+                if (number2[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+    }
+}
+
+// Number 3 - matrix
+void set_number3(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint32_t color = urgb_u32(r, g, b); // Define a cor com base nos parâmetros das linhas 10 a 12
+
+    for (int i = columns - 1; i >= 0; i--) // pecorre as linhas de cima para baixo
+    {
+        if ((columns - i) % 2 == 0) // As colunas Ler da direita para a esquerda
+        {
+            for (int j = 0; j < rows; j++) // Linhas lidas da esquerda para a direita j = 0 até j for = 4
+            {
+                if (number3[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+        else // As colunas impares tem as direções invertidas (LINHAS são lidas da DIREITA para a ESQUERDA, criando assim um padrão zigue-zague)
+        {
+            for (int j = rows - 1; j >= 0; j--) // Ler da esquerda para a direita
+            {
+                if (number3[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+    }
+}
+
+// Number 4 - matrix
+void set_number4(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint32_t color = urgb_u32(r, g, b); // Define a cor com base nos parâmetros das linhas 10 a 12
+
+    for (int i = columns - 1; i >= 0; i--) // pecorre as linhas de cima para baixo
+    {
+        if ((columns - i) % 2 == 0) // As colunas Ler da direita para a esquerda
+        {
+            for (int j = 0; j < rows; j++) // Linhas lidas da esquerda para a direita j = 0 até j for = 4
+            {
+                if (number4[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+        else // As colunas impares tem as direções invertidas (LINHAS são lidas da DIREITA para a ESQUERDA, criando assim um padrão zigue-zague)
+        {
+            for (int j = rows - 1; j >= 0; j--) // Ler da esquerda para a direita
+            {
+                if (number4[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+    }
+}
+
+// Number 5 - matrix
+void set_number5(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint32_t color = urgb_u32(r, g, b); // Define a cor com base nos parâmetros das linhas 10 a 12
+
+    for (int i = columns - 1; i >= 0; i--) // pecorre as linhas de cima para baixo
+    {
+        if ((columns - i) % 2 == 0) // As colunas Ler da direita para a esquerda
+        {
+            for (int j = 0; j < rows; j++) // Linhas lidas da esquerda para a direita j = 0 até j for = 4
+            {
+                if (number5[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+        else // As colunas impares tem as direções invertidas (LINHAS são lidas da DIREITA para a ESQUERDA, criando assim um padrão zigue-zague)
+        {
+            for (int j = rows - 1; j >= 0; j--) // Ler da esquerda para a direita
+            {
+                if (number5[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+    }
+}
+
+// Number 6 - matrix
+void set_number6(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint32_t color = urgb_u32(r, g, b); // Define a cor com base nos parâmetros das linhas 10 a 12
+
+    for (int i = columns - 1; i >= 0; i--) // pecorre as linhas de cima para baixo
+    {
+        if ((columns - i) % 2 == 0) // As colunas Ler da direita para a esquerda
+        {
+            for (int j = 0; j < rows; j++) // Linhas lidas da esquerda para a direita j = 0 até j for = 4
+            {
+                if (number6[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+        else // As colunas impares tem as direções invertidas (LINHAS são lidas da DIREITA para a ESQUERDA, criando assim um padrão zigue-zague)
+        {
+            for (int j = rows - 1; j >= 0; j--) // Ler da esquerda para a direita
+            {
+                if (number6[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+    }
+}
+
+// Number 7 - matrix
+void set_number7(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint32_t color = urgb_u32(r, g, b); // Define a cor com base nos parâmetros das linhas 10 a 12
+
+    for (int i = columns - 1; i >= 0; i--) // pecorre as linhas de cima para baixo
+    {
+        if ((columns - i) % 2 == 0) // As colunas Ler da direita para a esquerda
+        {
+            for (int j = 0; j < rows; j++) // Linhas lidas da esquerda para a direita j = 0 até j for = 4
+            {
+                if (number7[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+        else // As colunas impares tem as direções invertidas (LINHAS são lidas da DIREITA para a ESQUERDA, criando assim um padrão zigue-zague)
+        {
+            for (int j = rows - 1; j >= 0; j--) // Ler da esquerda para a direita
+            {
+                if (number7[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+    }
+}
+
+// Number 8 - matrix
+void set_number8(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint32_t color = urgb_u32(r, g, b); // Define a cor com base nos parâmetros das linhas 10 a 12
+
+    for (int i = columns - 1; i >= 0; i--) // pecorre as linhas de cima para baixo
+    {
+        if ((columns - i) % 2 == 0) // As colunas Ler da direita para a esquerda
+        {
+            for (int j = 0; j < rows; j++) // Linhas lidas da esquerda para a direita j = 0 até j for = 4
+            {
+                if (number8[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+        else // As colunas impares tem as direções invertidas (LINHAS são lidas da DIREITA para a ESQUERDA, criando assim um padrão zigue-zague)
+        {
+            for (int j = rows - 1; j >= 0; j--) // Ler da esquerda para a direita
+            {
+                if (number8[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+    }
+}
+
+// Number 9 - matrix
+void set_number9(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint32_t color = urgb_u32(r, g, b); // Define a cor com base nos parâmetros das linhas 10 a 12
+
+    for (int i = columns - 1; i >= 0; i--) // pecorre as linhas de cima para baixo
+    {
+        if ((columns - i) % 2 == 0) // As colunas Ler da direita para a esquerda
+        {
+            for (int j = 0; j < rows; j++) // Linhas lidas da esquerda para a direita j = 0 até j for = 4
+            {
+                if (number9[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+        else // As colunas impares tem as direções invertidas (LINHAS são lidas da DIREITA para a ESQUERDA, criando assim um padrão zigue-zague)
+        {
+            for (int j = rows - 1; j >= 0; j--) // Ler da esquerda para a direita
+            {
+                if (number9[i][j])
+                {
+                    put_pixel(color); // Liga os LEDs com um buffer
+                }
+                else
+                {
+                    put_pixel(0); // Desliga o LEDs em false (0)
+                }
+            }
+        }
+    }
+}
+
 
 #endif
