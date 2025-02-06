@@ -1,11 +1,6 @@
 #ifndef LEDS
 #define LEDS
 
-// bibliotecas
-#include <stdio.h>
-#include "pico/stdlib.h"
-
-
 const uint LED_R = 13; // Led vermelho conectado ao GPIO 13
 const uint LED_G = 11; // Led Verde conectado ao GPIO 11
 const uint LED_B = 12; // Led azul conectado ao GPIO 12
