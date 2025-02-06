@@ -54,6 +54,7 @@ bool debounce_timer_callback(struct repeating_timer *t)
         {
             led_state = !led_state; // Se o led_state = false, ao pressionar o botão, led_state = true. Se led_state = true ao pressionar o botão, led_state = false.
             led_verde_on();
+            // se o led for ligado ou desligar uma mensagem será exibida no serial monitor
             if(led_state == true)
             {
                 printf("\nBOTAO A PRESSIONADO. \nESTADO DO LED VERDE: LIGADO!\n");

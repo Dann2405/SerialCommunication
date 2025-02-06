@@ -4,6 +4,7 @@
 #include "hardware/i2c.h"
 #include "hardware/pio.h"
 #include "hardware/clocks.h"
+#include "hardware/uart.h"
 
 // pio.h
 #include "ws2812.pio.h"
@@ -13,6 +14,7 @@ void ws2812_init(); // prototipo da inicialização do ws281.pio
 #include "include/matrixWS2812.h"
 #include "include/leds.h"
 #include "include/buttons.h"
+#include "include/UARTconfig.h"
 
 void ws2812_init()
 {
