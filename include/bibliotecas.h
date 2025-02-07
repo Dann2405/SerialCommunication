@@ -1,4 +1,10 @@
+#ifndef BIBLIOTECAS_H
+#define BIBLIOTECAS_H
+
 #include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "pico/stdlib.h"
 #include "hardware/spi.h"
 #include "hardware/i2c.h"
@@ -24,3 +30,5 @@ void ws2812_init()
 
     ws2812_program_init(pio, sm, offset, WS2812_PIN, 800000, IS_RGBW); // Vai inicializar o programa de controle do WS2812 no PIO
 }
+
+#endif

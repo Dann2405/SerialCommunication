@@ -9,7 +9,7 @@
 
 uint8_t led_r = 0; // Intensidade do LED Vermelho
 uint8_t led_g = 0; // Intensidade do LED Verde
-uint8_t led_b = 0; // Intensidade do LED Azul
+uint8_t led_b = 200; // Intensidade do LED Azul
 
 // BUFFER DE NUMEROS DE 0 A 9
 bool number0[columns][rows] =
@@ -120,7 +120,7 @@ void set_number0(uint8_t r, uint8_t g, uint8_t b)
 
     for (int i = columns - 1; i >= 0; i--) // pecorre as linhas de cima para baixo
     {
-        if ((columns - i) % 2 == 0) // As colunas Ler da direita para a esquerda
+        if ((columns - i) % 2 == 0) // As colunas Ler da direita para a esquerda (Colunas PAR)
         {
             for (int j = 0; j < rows; j++) // Linhas lidas da esquerda para a direita j = 0 até j for = 4
             {
@@ -492,6 +492,5 @@ void set_number9(uint8_t r, uint8_t g, uint8_t b)
         }
     }
 }
-
 
 #endif

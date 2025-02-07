@@ -1,6 +1,5 @@
 #include "include/bibliotecas.h"
 
-
 int main()
 {
     stdio_init_all();
@@ -12,8 +11,11 @@ int main()
     gpio_set_irq_enabled_with_callback(BUTTON_A, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
     gpio_set_irq_enabled_with_callback(BUTTON_B, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
 
-    while (true) {
-        sleep_ms(5000);
-        printf("Hello, world!\n");
+    my_uart_init(); // Inicializa a UART
+
+    while (true)
+    {
+        sleep_ms(150);
+        uart_read();    // Inicializa a leitura da UART
     }
 }
