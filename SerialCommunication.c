@@ -12,10 +12,12 @@ int main()
     gpio_set_irq_enabled_with_callback(BUTTON_B, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
 
     my_uart_init(); // Inicializa a UART
+    
 
     while (true)
     {
         sleep_ms(150);
         uart_read();    // Inicializa a leitura da UART
+        usb_read();    // Inicializa a leitura da USB
     }
 }

@@ -6,8 +6,8 @@
 #define UART_TX_PIN 0    // Pino GPIO usado para TX
 #define UART_RX_PIN 1    // Pino GPIO usado para RX
 
-char command[1]; // Variável para armazenar o comando recebido
-bool command_received = false; // flag para indicar se um comando foi recebido
+char command[2];                // Variável para armazenar o comando recebido
+bool command_received = false;  // flag para indicar se um comando foi recebido
 uint32_t last_command_time = 0; // vai armazenar o tempo do último comando recebido
 
 void my_uart_init()
@@ -65,13 +65,13 @@ void uart_read()
     printf("Digite um comando: ");
     if (uart_is_readable(UART_ID)) // verifica se a UART está pronta para leitura
     {
-        int index = 0; // índice para armazenar os caracteres recebidos
+        int index = 0;                      // índice para armazenar os caracteres recebidos
         while (index < sizeof(command) - 1) // loop para ler os caracteres recebidos
         {
-            int character = uart_getc(UART_ID); // lê um caractere da UART
+            int character = uart_getc(UART_ID);  // lê um caractere da UART
             if (character != PICO_ERROR_TIMEOUT) // verifica se o caractere é válido
             {
-                command[index++] = (char)character; // armazena o caractere na variável command
+                command[index++] = (char)character;         // armazena o caractere na variável command
                 if (character == '\n' || character == '\r') // verifica se o caractere é um caractere de nova linha
                 {
                     break; // sai do loop
@@ -79,20 +79,33 @@ void uart_read()
             }
         }
         command[index] = '\0'; // adiciona o caractere nulo ao final da string
-        if (index > 0) // verifica se algum caractere foi recebido
+        if (index > 0)         // verifica se algum caractere foi recebido
         {
             process_command(command); // processa o comando recebido
-            command_received = true; // define a flag para indicar que um comando foi recebido
+            command_received = true;  // define a flag para indicar que um comando foi recebido
         }
     }
 
     if (!command_received) // verifica se um comando foi recebido
     {
-        if (scanf("%1s", command) == 1) // lê um comando da entrada padrão 
+        if (scanf("%1s", command) == 1) // lê um comando da entrada padrão
         {
             process_command(command); // processa o comando recebido
         }
     }
+}
+
+// Função para ler dados via USB
+void usb_read() {
+    if (stdio_usb_connected()) { // Verifica se o USB está conectado
+        char c;
+        if (scanf("%1s", &c) == 1) { // Lê um caractere da entrada padrão
+            command[0] = c;
+            command[1] = '\0';
+            process_command(command);
+        }
+    }
+    sleep_ms(40); // Pequena pausa para evitar leituras contínuas
 }
 
 
