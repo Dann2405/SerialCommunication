@@ -52,14 +52,14 @@ bool debounce_timer_callback(struct repeating_timer *t)
     {
         if (last_pressed_button == BUTTON_A) // Ao pressionar o botão A, ele vai ligar ou desligar
         {
-            led_state = !led_state; // Se o led_state = false, ao pressionar o botão, led_state = true. Se led_state = true ao pressionar o botão, led_state = false.
+            led_state_verde = !led_state_verde; // Se o led_state = false, ao pressionar o botão, led_state = true. Se led_state = true ao pressionar o botão, led_state = false.
             led_verde_on();
             // se o led for ligado ou desligar uma mensagem será exibida no serial monitor
-            if(led_state == true)
+            if(led_state_verde == true)
             {
                 printf("\nBOTAO A PRESSIONADO. \nESTADO DO LED VERDE: LIGADO!\n");
             }
-            else if (led_state == false)
+            else if (led_state_verde == false)
             {
                 printf("\nBOTAO A PRESSIONADO. \nESTADO DO LED VERDE: DESLIGADO!\n");
             }
@@ -67,14 +67,14 @@ bool debounce_timer_callback(struct repeating_timer *t)
     }
     else if (last_pressed_button == BUTTON_B) // Ao pressionar o botão B, ele vai ligar ou desligar
     {
-        led_state = !led_state;
+        led_state_azul = !led_state_azul;
         led_blue_on();
         // se o led for ligado ou desligar uma mensagem será exibida no serial monitor
-        if(led_state == true)
+        if(led_state_azul == true)
         {
             printf("\nBOTAO B PRESSIONADO. \nESTADO DO LED AZUL: LIGADO!\n");
         }
-        else if(led_state == false)
+        else if(led_state_azul == false)
         {
             printf("\nBOTAO B PRESSIONADO. \nESTADO DO LED AZUL: DESLIGADO!\n");
         }
