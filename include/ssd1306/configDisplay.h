@@ -91,6 +91,36 @@ void led_azul_OFF_display()
     ssd1306_send_data(&ssd); // Atualiza o display
 }
 
+void led_vermelho_ON_display()
+{
+    ssd1306_t ssd; // Declare the ssd variable
+    ssd1306_init(&ssd, WIDTH, HEIGHT, false, endereco, I2C_PORT); // Initialize the display
+
+    cor = !cor;
+    // Atualiza o conteúdo do display com animações
+    ssd1306_fill(&ssd, !cor); // Limpa o display
+    ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
+    ssd1306_draw_string(&ssd, " ", 8, 10); // Desenha uma string
+    ssd1306_draw_string(&ssd, "   UART   ", 15, 10); // Desenha uma string
+    ssd1306_draw_string(&ssd, "Led RED ON", 25, 35); // Desenha uma string      
+    ssd1306_send_data(&ssd); // Atualiza o display
+}
+
+void led_vermelho_OFF_display()
+{
+    ssd1306_t ssd; // Declare the ssd variable
+    ssd1306_init(&ssd, WIDTH, HEIGHT, false, endereco, I2C_PORT); // Initialize the display
+
+    cor = !cor;
+    // Atualiza o conteúdo do display com animações
+    ssd1306_fill(&ssd, !cor); // Limpa o display
+    ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
+    ssd1306_draw_string(&ssd, " ", 8, 10); // Desenha uma string
+    ssd1306_draw_string(&ssd, "   UART   ", 15, 10); // Desenha uma string
+    ssd1306_draw_string(&ssd, "Led RED OFF", 25, 35); // Desenha uma string      
+    ssd1306_send_data(&ssd); // Atualiza o display
+}
+
 void numero_zero()
 {
     ssd1306_t ssd; // Declare the ssd variable

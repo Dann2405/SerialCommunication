@@ -18,69 +18,100 @@ void my_uart_init()
     gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART); // configura o pino RX
 }
 
-// função para processar o comando recebido
+// função para processar o comando recebido via UART
 void process_command(const char *command)
 {
     switch (command[0])
     {
     case '0':
         set_number0(led_r, led_g, led_b);
-        numero_zero();
+        numero_zero(); // Atualiza o display
         break;
     case '1':
         set_number1(led_r, led_g, led_b);
-        numeros_um();
+        numeros_um(); // Atualiza o display
         break;
     case '2':
         set_number2(led_r, led_g, led_b);
-        numero_dois();
+        numero_dois(); // Atualiza o display
         break;
     case '3':
         set_number3(led_r, led_g, led_b);
-        numero_tres();
+        numero_tres(); // Atualiza o display
         break;
     case '4':
         set_number4(led_r, led_g, led_b);
-        numero_quatro();
+        numero_quatro(); // Atualiza o display
         break;
     case '5':
         set_number5(led_r, led_g, led_b);
-        numero_cinco();
+        numero_cinco();// Atualiza o display
         break;
     case '6':
         set_number6(led_r, led_g, led_b);
-        numero_seis();
+        numero_seis(); // Atualiza o display
         break;
     case '7':
         set_number7(led_r, led_g, led_b);
-        numero_sete();
+        numero_sete(); // Atualiza o display
         break;
     case '8':
         set_number8(led_r, led_g, led_b);
-        numero_oito();
+        numero_oito();// Atualiza o display
         break;
     case '9':
         set_number9(led_r, led_g, led_b);
-        numero_nove();
+        numero_nove(); // Atualiza o display
         break;
     case 'g':
     case 'G':
         led_state_verde = !led_state_verde; // Se o led_state = false, ao pressionar o botão, led_state = true. Se led_state = true ao pressionar o botão, led_state = false.
-        led_verde_on();
+        if(led_state_verde == 1)
+        {
+            led_verde_on(); // Liga o led
+            led_verde_ON_display(); // Atualiza o display
+        }
+        else
+        {
+            led_verde_on(); // Desliga o led
+            led_verde_OFF_display(); // Atualiza o display
+        }
         break;
     case 'b':
     case 'B':
         led_state_azul = !led_state_azul; // Se o led_state = false, ao pressionar o botão, led_state = true. Se led_state = true ao pressionar o botão, led_state = false.
-        led_blue_on();
+        if (led_state_azul == 1)
+        {
+            led_blue_on();// Liga o led
+            led_azul_ON_display(); // Atualiza o display
+        }
+        else
+        {
+            led_blue_on(); // Desliga o led
+            led_azul_OFF_display(); // Atualiza o display
+        }
         break;
     case 'r':
-    case 'R':
-        led_state_vermelho = !led_state_vermelho; // Se o led_state = false, ao pressionar o botão, led_state = true. Se led_state = true ao pressionar o botão, led_state = false.
-        led_vermelho_on();
+    case 'R': // Se o comando recebido for 'r' ou 'R'
+        led_state_vermelho = !led_state_vermelho;
+        if (led_state_vermelho == 1)
+        {
+            led_vermelho_on(); // Liga o led
+            led_vermelho_ON_display(); // Atualiza o display
+        }
+        else
+        {
+            led_vermelho_on(); // Desliga o led
+            led_vermelho_OFF_display(); // Atualiza o display
+        }
+        break;
+    case 'D':
+    case 'd':
+        imagem_inicial(); // Atualiza o display
         break;
     default:
         printf("\nComando inválido\n");
-        comando_invalido();
+        comando_invalido(); // Atualiza o display
         break;
         printf("\nComando recebido: %s\n", command);
     }
