@@ -7,6 +7,7 @@ const uint LED_B = 12; // Led azul conectado ao GPIO 12
 
 volatile bool led_state_verde = 0;
 volatile bool led_state_azul = 0;
+volatile bool led_state_vermelho = 0;
 
 void leds_init()
 {
@@ -29,6 +30,10 @@ void led_verde_on()
 void led_blue_on()
 {
     gpio_put(LED_B, led_state_azul);
+}
+void led_vermelho_on()
+{
+    gpio_put(LED_R, led_state_vermelho);
 }
 
 #endif

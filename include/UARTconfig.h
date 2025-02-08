@@ -63,6 +63,18 @@ void process_command(const char *command)
         set_number9(led_r, led_g, led_b);
         numero_nove();
         break;
+    case 'g':
+        led_state_verde = !led_state_verde; // Se o led_state = false, ao pressionar o botão, led_state = true. Se led_state = true ao pressionar o botão, led_state = false.
+        led_verde_on();
+        break;
+    case 'b':
+        led_state_azul = !led_state_azul; // Se o led_state = false, ao pressionar o botão, led_state = true. Se led_state = true ao pressionar o botão, led_state = false.
+        led_blue_on();
+        break;
+    case 'r':
+        led_state_vermelho = !led_state_vermelho; // Se o led_state = false, ao pressionar o botão, led_state = true. Se led_state = true ao pressionar o botão, led_state = false.
+        led_vermelho_on();
+        break;
     default:
         printf("\nComando inválido\n");
         comando_invalido();
