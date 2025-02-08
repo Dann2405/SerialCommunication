@@ -6,8 +6,7 @@
 #define UART_TX_PIN 0    // Pino GPIO usado para TX
 #define UART_RX_PIN 1    // Pino GPIO usado para RX
 
-char command[2];                // Variável para armazenar o comando recebido
-bool command_received = false;  // flag para indicar se um comando foi recebido
+char command[10];               // Variável para armazenar o comando recebido
 bool prompt_exibido = false;    // flag para indicar se o prompt foi exibido
 uint32_t last_command_time = 0; // vai armazenar o tempo do último comando recebido
 
@@ -25,39 +24,50 @@ void process_command(const char *command)
     {
     case '0':
         set_number0(led_r, led_g, led_b);
+        numero_zero();
         break;
     case '1':
         set_number1(led_r, led_g, led_b);
+        numeros_um();
         break;
     case '2':
         set_number2(led_r, led_g, led_b);
+        numero_dois();
         break;
     case '3':
         set_number3(led_r, led_g, led_b);
+        numero_tres();
         break;
     case '4':
         set_number4(led_r, led_g, led_b);
+        numero_quatro();
         break;
     case '5':
         set_number5(led_r, led_g, led_b);
+        numero_cinco();
         break;
     case '6':
         set_number6(led_r, led_g, led_b);
+        numero_seis();
         break;
     case '7':
         set_number7(led_r, led_g, led_b);
+        numero_sete();
         break;
     case '8':
         set_number8(led_r, led_g, led_b);
+        numero_oito();
         break;
     case '9':
         set_number9(led_r, led_g, led_b);
+        numero_nove();
         break;
     default:
         printf("\nComando inválido\n");
+        comando_invalido();
         break;
-    }
     printf("\nComando recebido: %s\n", command);
+    }
 }
 
 // função para ler dados via UART
