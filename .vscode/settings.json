@@ -38,6 +38,15 @@
     "raspberry-pi-pico.ninjaPath": "${HOME}/.pico-sdk/ninja/v1.12.1/ninja",
     "files.associations": {
         "spi.h": "c",
-        "bibliotecas.h": "c"
+        "bibliotecas.h": "c",
+        "cstdint": "cpp",
+        "i2c.h": "c",
+        "uartconfig.h": "c",
+        "font.h": "c",
+        "buttons.h": "c",
+        "displayssd1306.h": "c",
+        "ssd1306.h": "c",
+        "matrixws2812.h": "c",
+        "leds.h": "c"
     }
 }
