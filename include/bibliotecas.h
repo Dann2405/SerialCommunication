@@ -19,9 +19,14 @@ void ws2812_init(); // prototipo da inicialização do ws281.pio
 // Cabeçalhos .h da pasta include
 #include "include/matrixWS2812.h"
 #include "include/leds.h"
+#include "include/ssd1306/font.h"
+#include "include/ssd1306/ssd1306.h"
+#include "include/ssd1306/DISPLAYssd1306.h"
+#include "include/ssd1306/configDisplay.h"
 #include "include/buttons.h"
 #include "include/UARTconfig.h"
 
+// inicialização do ws2812.pio
 void ws2812_init()
 {
     PIO pio = pio0;                                      // Configuração do PIO 0
