@@ -251,8 +251,9 @@ void comando_invalido()
     ssd1306_fill(&ssd, !cor); // Limpa o display
     ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
     ssd1306_draw_string(&ssd, " ", 8, 10); // Desenha uma string
-    ssd1306_draw_string(&ssd, "Comando invalido", 10, 10); // Desenha uma string
-    ssd1306_draw_string(&ssd, "Tente novamente", 5, 35); // Desenha uma string      
+    ssd1306_draw_string(&ssd, "Comando", 35, 10); // Desenha uma string
+    ssd1306_draw_string(&ssd, "invalido", 35, 25); // Desenha uma string      
+    ssd1306_draw_string(&ssd, "Tente novamente", 6, 45); // Desenha uma string   
     ssd1306_send_data(&ssd); // Atualiza o display
 }
 
