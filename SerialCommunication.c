@@ -19,7 +19,7 @@ int main()
     while (true)
     {
         sleep_ms(100);
-        //uart_read();
         usb_read();
+        //uart_read();
     }
 }

@@ -9,6 +9,7 @@
 char command[10];               // Variável para armazenar o comando recebido
 bool prompt_exibido = false;    // flag para indicar se o prompt foi exibido
 uint32_t last_command_time = 0; // vai armazenar o tempo do último comando recebido
+bool command_received = false;
 
 void my_uart_init()
 {
@@ -66,38 +67,43 @@ void process_command(const char *command)
         printf("\nComando inválido\n");
         comando_invalido();
         break;
-    printf("\nComando recebido: %s\n", command);
+        printf("\nComando recebido: %s\n", command);
     }
 }
 
 // função para ler dados via UART
 void uart_read()
 {
-    if (!prompt_exibido) // Se o prompt não foi exibido, exibe
+    // Lê o comando via UART
+    if (uart_is_readable(UART_ID))
     {
-        printf("Digite um comando: ");
-        prompt_exibido = true;
-    }
-    if (uart_is_readable(UART_ID)) // Verifica se há dados disponíveis para leitura
-    {
-        int index = 0; // Índice para armazenar os caracteres recebidos
-        while (index < sizeof(command) - 1) // Enquanto houver espaço no buffer
+        int index = 0; // Índice para armazenar o caractere recebido
+        // Enquanto houver espaço no buffer
+        while (index < sizeof(command) - 1)
         {
-            int character = uart_getc(UART_ID); // Lê um caractere
-            if (character != PICO_ERROR_TIMEOUT)// Se houver um caractere disponível
+            int character = uart_getc(UART_ID); // Lê o caractere
+            if (character != PICO_ERROR_TIMEOUT) // Se houver um caractere disponível
             {
                 command[index++] = (char)character; // Armazena o caractere no buffer
-                if (character == '\n' || character == '\r') // Se o caractere for um retorno de carro ou nova linha
+                if (character == '\n' || character == '\r') // Se for um caractere de nova linha
                 {
                     break; // sai do loop
                 }
             }
         }
         command[index] = '\0'; // Adiciona o terminador de string
-        if (index > 0) // Se houver dados no buffer
+        if (index > 0) // Se houver algum caractere no buffer
         {
             process_command(command); // Processa o comando
-            prompt_exibido = false; // Para exibir o prompt novamente na próxima vez
+            command_received = true; // Indica que um comando foi recebido
+        }
+    }
+
+    if (!command_received) // se nao houver comando recebido
+    {
+        if (scanf("%1s", command) == 1) // Tenta ler um caracterer via scanf
+        {
+            process_command(command); // Processa o comando
         }
     }
 }
@@ -108,10 +114,10 @@ void usb_read()
     if (stdio_usb_connected())
     {                                  // Verifica se o USB está conectado
         int c = getchar_timeout_us(0); // Tenta ler sem bloqueio (retorna PICO_ERROR_TIMEOUT se não houver dado)
-        if (c != PICO_ERROR_TIMEOUT) // Se houver um caractere disponível
+        if (c != PICO_ERROR_TIMEOUT)   // Se houver um caractere disponível
         {
-            command[0] = (char)c; // Armazena o caractere no buffer
-            command[1] = '\0'; // Adiciona o terminador de string
+            command[0] = (char)c;     // Armazena o caractere no buffer
+            command[1] = '\0';        // Adiciona o terminador de string
             process_command(command); // Processa o comando
         }
     }
