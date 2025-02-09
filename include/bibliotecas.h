@@ -1,6 +1,8 @@
 #ifndef BIBLIOTECAS_H
 #define BIBLIOTECAS_H
 
+// Cabeçalho responsavel por incluir todas as bibliotecas necessárias para o projeto, feito para facilitar a inclusão de bibliotecas e uma melhor organização do código
+
 #include <stdio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,7 +23,6 @@ void ws2812_init(); // prototipo da inicialização do ws281.pio
 #include "include/leds.h"
 #include "include/ssd1306/font.h"
 #include "include/ssd1306/ssd1306.h"
-#include "include/ssd1306/DISPLAYssd1306.h"
 #include "include/ssd1306/configDisplay.h"
 #include "include/buttons.h"
 #include "include/UARTconfig.h"
