@@ -1,6 +1,8 @@
 #ifndef UARTCONFIG_H
 #define UARTCONFIG_H
 
+// Cabeçalhos responsavel por definir as funções de comunicação via UART e USB
+
 #define UART_ID uart0    // Seleciona a UART0
 #define BAUD_RATE 115200 // Define a taxa de transmissão
 #define UART_TX_PIN 0    // Pino GPIO usado para TX

@@ -5,6 +5,8 @@
 // As fontes das letras minusculas foram feitas no site: https://dotmatrixtool.com/#
 // Com a seguinte configuração: 8px by 8px, column major, little endian.
 
+// Cabeçalho responsável por definir a fonte de caracteres para o display OLED SSD1306.
+
 static uint8_t font[] = {
     // Caractere vazio
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Nothing

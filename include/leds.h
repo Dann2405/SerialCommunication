@@ -1,10 +1,13 @@
 #ifndef LEDS
 #define LEDS
 
+// Cabeçalhos responsavel por definir as funções de controle dos LEDs RGB
+
 const uint LED_R = 13; // Led vermelho conectado ao GPIO 13
 const uint LED_G = 11; // Led Verde conectado ao GPIO 11
 const uint LED_B = 12; // Led azul conectado ao GPIO 12
 
+// Variáveis para controlar o estado dos LEDs
 volatile bool led_state_verde = 0;
 volatile bool led_state_azul = 0;
 volatile bool led_state_vermelho = 0;

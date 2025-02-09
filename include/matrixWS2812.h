@@ -1,6 +1,8 @@
 #ifndef MATRIXWS2812
 #define MATRIXWS2812
 
+// Cabeçalho responsavel por definir as funções de exibição de números na matriz 5x5 de LEDs WS2812
+
 // Definições iniciais
 #define WS2812_PIN 7
 #define IS_RGBW false

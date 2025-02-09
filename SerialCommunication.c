@@ -19,7 +19,7 @@ int main()
     while (true)
     {
         sleep_ms(100);
-        usb_read();
-        //uart_read();
+        usb_read(); // Lê os dados recebidos via USB
+        //uart_read(); // Lê os dados recebidos via UART
     }
 }

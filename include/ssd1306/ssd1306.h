@@ -11,6 +11,7 @@
 #define WIDTH 128
 #define HEIGHT 64
 
+// Comandos do display
 typedef enum {
   SET_CONTRAST = 0x81,
   SET_ENTIRE_ON = 0xA4,
@@ -31,6 +32,7 @@ typedef enum {
   SET_CHARGE_PUMP = 0x8D
 } ssd1306_command_t;
 
+// Estrutura do display
 typedef struct {
   uint8_t width, height, pages, address;
   i2c_inst_t *i2c_port;
@@ -40,6 +42,7 @@ typedef struct {
   uint8_t port_buffer[2];
 } ssd1306_t;
 
+// Protótipos das funções
 void ssd1306_init(ssd1306_t *ssd, uint8_t width, uint8_t height, bool external_vcc, uint8_t address, i2c_inst_t *i2c);
 void ssd1306_config(ssd1306_t *ssd);
 void ssd1306_command(ssd1306_t *ssd, uint8_t command);
@@ -56,6 +59,7 @@ void ssd1306_draw_string(ssd1306_t *ssd, const char *str, uint8_t x, uint8_t y);
 
 void displayssd1306_init();
 
+// Inicializa o display
 void ssd1306_init(ssd1306_t *ssd, uint8_t width, uint8_t height, bool external_vcc, uint8_t address, i2c_inst_t *i2c)
 {
   ssd->width = width;
@@ -69,6 +73,7 @@ void ssd1306_init(ssd1306_t *ssd, uint8_t width, uint8_t height, bool external_v
   ssd->port_buffer[0] = 0x80;
 }
 
+// Configura o display
 void ssd1306_config(ssd1306_t *ssd)
 {
   ssd1306_command(ssd, SET_DISP | 0x00);
@@ -98,6 +103,7 @@ void ssd1306_config(ssd1306_t *ssd)
   ssd1306_command(ssd, SET_DISP | 0x01);
 }
 
+// Envia um comando para o display
 void ssd1306_command(ssd1306_t *ssd, uint8_t command)
 {
   ssd->port_buffer[1] = command;
@@ -109,6 +115,7 @@ void ssd1306_command(ssd1306_t *ssd, uint8_t command)
       false);
 }
 
+// Envia os dados para o display
 void ssd1306_send_data(ssd1306_t *ssd)
 {
   ssd1306_command(ssd, SET_COL_ADDR);
@@ -125,6 +132,7 @@ void ssd1306_send_data(ssd1306_t *ssd)
       false);
 }
 
+// Define um pixel no buffer de memória
 void ssd1306_pixel(ssd1306_t *ssd, uint8_t x, uint8_t y, bool value)
 {
   uint16_t index = (y >> 3) + (x << 3) + 1;
@@ -142,6 +150,7 @@ void ssd1306_fill(ssd1306_t *ssd, bool value) {
     ssd->ram_buffer[i] = byte;
 }*/
 
+// Preenche o display com um valor
 void ssd1306_fill(ssd1306_t *ssd, bool value)
 {
   // Itera por todas as posições do display
@@ -154,6 +163,7 @@ void ssd1306_fill(ssd1306_t *ssd, bool value)
   }
 }
 
+// Desenha um retângulo no display
 void ssd1306_rect(ssd1306_t *ssd, uint8_t top, uint8_t left, uint8_t width, uint8_t height, bool value, bool fill)
 {
   for (uint8_t x = left; x < left + width; ++x)
@@ -179,6 +189,8 @@ void ssd1306_rect(ssd1306_t *ssd, uint8_t top, uint8_t left, uint8_t width, uint
   }
 }
 
+
+// Desenha uma linha no display
 void ssd1306_line(ssd1306_t *ssd, uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, bool value)
 {
   int dx = abs(x1 - x0);
@@ -212,18 +224,21 @@ void ssd1306_line(ssd1306_t *ssd, uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1
   }
 }
 
+// Desenha uma linha horizontal no display
 void ssd1306_hline(ssd1306_t *ssd, uint8_t x0, uint8_t x1, uint8_t y, bool value)
 {
   for (uint8_t x = x0; x <= x1; ++x)
     ssd1306_pixel(ssd, x, y, value);
 }
 
+// Desenha uma linha vertical no display
 void ssd1306_vline(ssd1306_t *ssd, uint8_t x, uint8_t y0, uint8_t y1, bool value)
 {
   for (uint8_t y = y0; y <= y1; ++y)
     ssd1306_pixel(ssd, x, y, value);
 }
 
+// Desenha um caractere no display
 void ssd1306_draw_char(ssd1306_t *ssd, char c, uint8_t x, uint8_t y)
 {
     uint16_t index = 0;
@@ -266,6 +281,7 @@ void ssd1306_draw_string(ssd1306_t *ssd, const char *str, uint8_t x, uint8_t y)
   }
 }
 
+// Inicializa o display
 void displayssd1306_init()
 {
   // I2C Initialisation. Using it at 400Khz.

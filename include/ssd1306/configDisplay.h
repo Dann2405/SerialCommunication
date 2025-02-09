@@ -1,6 +1,8 @@
 #ifndef CONFIGDISPLAY_H
 #define CONFIGDISPLAY_H
 
+// Cabeçalho responsavel por definir as funções de configuração do display OLED SSD1306 e funções de exibição de imagens e textos
+
 bool cor = true;
 
 void config_display()

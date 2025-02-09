@@ -1,6 +1,8 @@
 #ifndef BUTTONS
 #define BUTTONS
 
+// Cabeçalhos responsavel por definir as funções de controle dos botões
+
 const uint BUTTON_A = 5; // Botão A conectado ao GPIO 5
 const uint BUTTON_B = 6; // Botão B conectado ao GPIO 6
 
