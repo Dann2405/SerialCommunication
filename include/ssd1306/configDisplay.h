@@ -41,7 +41,6 @@ void led_verde_ON_display()
     ssd1306_fill(&ssd, !cor); // Limpa o display
     ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
     ssd1306_draw_string(&ssd, " ", 8, 10); // Desenha uma string
-    ssd1306_draw_string(&ssd, "Botao A Press", 15, 10); // Desenha uma string
     ssd1306_draw_string(&ssd, "Led Verde ON", 20, 35); // Desenha uma string      
     ssd1306_send_data(&ssd); // Atualiza o display
 }
@@ -56,7 +55,6 @@ void led_verde_OFF_display()
     ssd1306_fill(&ssd, !cor); // Limpa o display
     ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
     ssd1306_draw_string(&ssd, " ", 8, 10); // Desenha uma string
-    ssd1306_draw_string(&ssd, "Botao A Press", 15, 10); // Desenha uma string
     ssd1306_draw_string(&ssd, "Led Verde OFF", 20, 35); // Desenha uma string      
     ssd1306_send_data(&ssd); // Atualiza o display
 }
@@ -71,7 +69,6 @@ void led_azul_ON_display()
     ssd1306_fill(&ssd, !cor); // Limpa o display
     ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
     ssd1306_draw_string(&ssd, " ", 8, 10); // Desenha uma string
-    ssd1306_draw_string(&ssd, "Botao B Press", 15, 10); // Desenha uma string
     ssd1306_draw_string(&ssd, "Led Azul ON", 25, 35); // Desenha uma string      
     ssd1306_send_data(&ssd); // Atualiza o display
 }
@@ -86,7 +83,6 @@ void led_azul_OFF_display()
     ssd1306_fill(&ssd, !cor); // Limpa o display
     ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
     ssd1306_draw_string(&ssd, " ", 8, 10); // Desenha uma string
-    ssd1306_draw_string(&ssd, "Botao B Press", 15, 10); // Desenha uma string
     ssd1306_draw_string(&ssd, "Led Azul OFF", 25, 35); // Desenha uma string      
     ssd1306_send_data(&ssd); // Atualiza o display
 }
@@ -101,7 +97,6 @@ void led_vermelho_ON_display()
     ssd1306_fill(&ssd, !cor); // Limpa o display
     ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
     ssd1306_draw_string(&ssd, " ", 8, 10); // Desenha uma string
-    ssd1306_draw_string(&ssd, "   UART   ", 15, 10); // Desenha uma string
     ssd1306_draw_string(&ssd, "Led RED ON", 25, 35); // Desenha uma string      
     ssd1306_send_data(&ssd); // Atualiza o display
 }
@@ -116,7 +111,6 @@ void led_vermelho_OFF_display()
     ssd1306_fill(&ssd, !cor); // Limpa o display
     ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
     ssd1306_draw_string(&ssd, " ", 8, 10); // Desenha uma string
-    ssd1306_draw_string(&ssd, "   UART   ", 15, 10); // Desenha uma string
     ssd1306_draw_string(&ssd, "Led RED OFF", 25, 35); // Desenha uma string      
     ssd1306_send_data(&ssd); // Atualiza o display
 }

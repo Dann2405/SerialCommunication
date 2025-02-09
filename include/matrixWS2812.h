@@ -7,9 +7,9 @@
 #define columns 5
 #define rows 5
 
-uint8_t led_r = 0; // Intensidade do LED Vermelho
+uint8_t led_r = 200; // Intensidade do LED Vermelho
 uint8_t led_g = 0; // Intensidade do LED Verde
-uint8_t led_b = 200; // Intensidade do LED Azul
+uint8_t led_b = 0; // Intensidade do LED Azul
 
 // BUFFER DE NUMEROS DE 0 A 9
 bool number0[columns][rows] =
