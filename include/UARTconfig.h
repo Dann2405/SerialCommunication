@@ -11,8 +11,9 @@
 char command[10];               // Variável para armazenar o comando recebido
 bool prompt_exibido = false;    // flag para indicar se o prompt foi exibido
 uint32_t last_command_time = 0; // vai armazenar o tempo do último comando recebido
-bool command_received = false;
+bool command_received = false; // flag para indicar se um comando foi recebido
 
+// inicializa a UART
 void my_uart_init()
 {
     uart_init(UART_ID, BAUD_RATE);                  // Inicializa o UART com a taxa de transmissão definida
